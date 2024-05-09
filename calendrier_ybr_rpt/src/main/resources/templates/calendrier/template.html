@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier</title>
+    <link th:href="${theme}" rel="stylesheet" />
+</head>
+<body>
+    <h1>Calendrier</h1>
+    <p th:text="@{'Utilisateur : ' + ${utilisateurDTO.prenom} + ' - solde : ' + ${utilisateurDTO.nombreDePoint}}"></p>
+    <table>
+        <tr>
+            <th>Jour</th>
+            <th>Gif</th>
+        </tr>
+        <tr th:each="jour:${pageDeJours.getContent()}">
+            <td><span th:text="${jour.getDate()}"></span></td>
+        </tr>
+    </table>
+    <span th:if="${pageDeJours.getNumber() != 0}">
+        <a th:href="${utilisateurDTO.id + '?page=0'}">Première page</a>
+        <a th:href="@{${utilisateurDTO.id} + '?page=' + ${pageDeJours.getNumber() - 1}}">Page précédente</a>
+    </span>
+    <span th:if="${pageDeJours.getNumber() != pageDeJours.getTotalPages() - 1}">
+        <a th:href="@{${utilisateurDTO.id} + '?page=' + ${pageDeJours.getNumber() + 1}}">Page suivante</a>
+        <a th:href="@{${utilisateurDTO.id} + '?page=' + ${pageDeJours.getTotalPages() - 1}}">Dernière page</a>
+    </span>
+    <br>
+    <span th:text="@{'Page ' + ${pageDeJours.getNumber() + 1} + ' sur ' + ${pageDeJours.getTotalPages()} + ' : ' + ${joursEnCours}}"></span>
+</body>
+</html>
