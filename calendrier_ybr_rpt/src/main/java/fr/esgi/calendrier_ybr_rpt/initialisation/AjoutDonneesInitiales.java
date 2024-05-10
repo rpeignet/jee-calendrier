@@ -4,6 +4,7 @@ import fr.esgi.calendrier_ybr_rpt.business.Jour;
 import fr.esgi.calendrier_ybr_rpt.business.Theme;
 import fr.esgi.calendrier_ybr_rpt.business.Utilisateur;
 import fr.esgi.calendrier_ybr_rpt.dto.in.UtilisateurCreationDTO;
+import fr.esgi.calendrier_ybr_rpt.mapper.UtilisateurMapper;
 import fr.esgi.calendrier_ybr_rpt.repository.JourRepository;
 import fr.esgi.calendrier_ybr_rpt.repository.ThemeRepository;
 import fr.esgi.calendrier_ybr_rpt.repository.UtilisateurRepository;
@@ -23,6 +24,7 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
     private ThemeRepository themeRepository;
     private JourRepository jourRepository;
     private UtilisateurService utilisateurService;
+    private UtilisateurMapper utilisateurMapper;
 
     @Override
     public void run(String... args) throws Exception {
@@ -53,6 +55,6 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
         utilisateurCreationDTO.email = "robin@esgi.fr";
         utilisateurCreationDTO.motDePasse = "test";
         utilisateurCreationDTO.idTheme = 1L;
-        utilisateurService.save(utilisateurCreationDTO);
+        utilisateurService.save(utilisateurMapper.toEntity(utilisateurCreationDTO));
     }
 }
