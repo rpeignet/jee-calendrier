@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 @AllArgsConstructor
@@ -43,8 +44,10 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
     private void ajouterJours(){
         YearMonth moisEnCours = YearMonth.now();
         LocalDate premierJour = moisEnCours.atDay(1);
+        Random rdm = new Random();
         for (int i = 0; i < moisEnCours.lengthOfMonth(); i++) {
-            jourRepository.save(new Jour(premierJour.plusDays(i)));
+            int valeurJourAleatoire = rdm.nextInt(12) + 29;
+            jourRepository.save(new Jour(premierJour.plusDays(i), valeurJourAleatoire));
         }
     }
 

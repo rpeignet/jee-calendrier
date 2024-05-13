@@ -13,14 +13,10 @@ public class GifServiceImpl implements GifService {
 
     @Override
     public Gif save(Gif gif) {
-        // TODO : voir comment sont gérer le nombre de point par jour ?
-        int nombreDePoint = gif.getUtilisateur().getNombreDePoint();
-        gif.getUtilisateur().setNombreDePoint(nombreDePoint - 30);
+        // TODO : voir comment si on reste sur des valeur de jour aléatoire ?
+        int nombreDePointUtilisateur = gif.getUtilisateur().getNombreDePoint();
+        int valeurJour = gif.getJour().getValeur();
+        gif.getUtilisateur().setNombreDePoint(nombreDePointUtilisateur - valeurJour);
         return gifRepository.save(gif);
-    }
-
-    @Override
-    public Gif findById(Long id) {
-        return null;
     }
 }

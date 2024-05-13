@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendrier</title>
     <link th:href="${theme}" rel="stylesheet" />
+    <link th:href="@{/style-calendrier/style.css}" rel="stylesheet" />
 </head>
 <body>
     <h1>Calendrier</h1>
@@ -13,9 +14,24 @@
         <tr>
             <th>Jour</th>
             <th>Gif</th>
+            <th>Utilisateur</th>
+            <th>Reaction</th>
         </tr>
         <tr th:each="jour:${pageDeJours.getContent()}">
             <td><span th:text="${jour.getDate()}"></span></td>
+            <td>
+                <span th:if="${jour.getGif() != null}">
+                    ouiiiii
+                </span>
+                <span th:unless="${jour.getGif() != null}">
+                    rohhhhh
+                </span>
+            </td>
+            <td>
+                <span th:if="${jour.getGif() != null && jour.getGif().getUtilisateur() != null}">
+                    <p th:text="${jour.getGif().getUtilisateur().getPrenom()}"></p>
+                </span>
+            </td>
         </tr>
     </table>
     <span th:if="${pageDeJours.getNumber() != 0}">

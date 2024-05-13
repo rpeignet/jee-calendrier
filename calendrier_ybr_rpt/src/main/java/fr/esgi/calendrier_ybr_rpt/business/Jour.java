@@ -15,14 +15,15 @@ public class Jour {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private LocalDate date;
+    private int valeur;
 
     @OneToOne(mappedBy = "jour")
     private Gif gif;
 
-    public Jour(LocalDate date) {
+    public Jour(LocalDate date, int valeur) {
         this.date = date;
+        this.valeur = valeur;
     }
 
     public Long getId() {
@@ -39,5 +40,17 @@ public class Jour {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public int getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(int valeur) {
+        this.valeur = valeur;
+    }
+
+    public Gif getGif() {
+        return gif;
     }
 }

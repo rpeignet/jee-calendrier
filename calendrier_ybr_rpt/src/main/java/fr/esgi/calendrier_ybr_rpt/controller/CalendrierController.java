@@ -47,7 +47,7 @@ public class CalendrierController {
         ModelAndView mav = new ModelAndView("calendrier/template-placement");
         Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
         Jour jour = jourService.findById(id);
-        GifPlacementDTO gifPlacementDTO = new GifPlacementDTO(utilisateur.getId(), jour.getId(), jour.getDate());
+        GifPlacementDTO gifPlacementDTO = new GifPlacementDTO(utilisateur.getId(), jour.getId(), jour.getDate(), jour.getValeur());
         mav.addObject("gifPlacementDTO", gifPlacementDTO);
         return mav;
     }

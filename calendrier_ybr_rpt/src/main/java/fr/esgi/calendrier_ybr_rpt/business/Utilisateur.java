@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Utilisateur {
@@ -32,8 +34,8 @@ public class Utilisateur {
     @JsonManagedReference
     private Theme theme;
 
-    @OneToOne(mappedBy = "utilisateur")
-    private Gif gif;
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    private List<Gif> gifs;
 
     public Long getId() {
         return id;
@@ -59,5 +61,7 @@ public class Utilisateur {
         this.nombreDePoint = nombreDePoint;
     }
 
-
+    public String getPrenom() {
+        return prenom;
+    }
 }

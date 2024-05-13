@@ -18,7 +18,7 @@ public class Gif {
     @JoinColumn(name = "jour_id")
     private Jour jour;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
 
@@ -28,5 +28,13 @@ public class Gif {
 
     public void setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
+    }
+
+    public Jour getJour() {
+        return jour;
+    }
+
+    public void setJour(Jour jour) {
+        this.jour = jour;
     }
 }
