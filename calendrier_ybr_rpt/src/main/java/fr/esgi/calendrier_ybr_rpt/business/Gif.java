@@ -1,6 +1,8 @@
 package fr.esgi.calendrier_ybr_rpt.business;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Entity
@@ -10,7 +12,10 @@ public class Gif {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Pattern(regexp = ".*\\.(?i)(gif)$", message = "Le Gif distant doit pointer vers une URL au bon format qui se termine par .gif, .Gif ou .GIF")
     private String urlFichier;
+
+    private String fileName;
 
     private String Legende;
 
@@ -20,6 +25,7 @@ public class Gif {
 
     @ManyToOne
     @JoinColumn(name = "utilisateur_id")
+    @JsonManagedReference
     private Utilisateur utilisateur;
 
     public Utilisateur getUtilisateur() {
@@ -36,5 +42,21 @@ public class Gif {
 
     public void setJour(Jour jour) {
         this.jour = jour;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getUrlFichier() {
+        return urlFichier;
+    }
+
+    public void setUrlFichier(String urlFichier) {
+        this.urlFichier = urlFichier;
     }
 }

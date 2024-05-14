@@ -46,3 +46,7 @@ span {
 span:last-child {
     margin-bottom: 0;
 }
+
+.image-gif{
+    height: 30vh;
+}

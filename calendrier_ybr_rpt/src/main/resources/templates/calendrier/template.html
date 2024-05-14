@@ -21,7 +21,7 @@
             <td><span th:text="${jour.getDate()}"></span></td>
             <td>
                 <span th:if="${jour.getGif() != null}">
-                    ouiiiii
+                   <img th:src="${'/gifs-files/' + jour.getGif().getFileName()}" class="image-gif">
                 </span>
                 <span th:unless="${jour.getGif() != null}">
                     rohhhhh

@@ -1,5 +1,6 @@
 package fr.esgi.calendrier_ybr_rpt.business;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -35,6 +36,7 @@ public class Utilisateur {
     private Theme theme;
 
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Gif> gifs;
 
     public Long getId() {
