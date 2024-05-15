@@ -22,12 +22,16 @@ public class GifServiceImpl implements GifService {
         // TODO : voir si on reste sur des valeurs de jour aléatoire ?
         int nombreDePointUtilisateur = gif.getUtilisateur().getNombreDePoint();
         int valeurJour = gif.getJour().getValeur();
-        if(nombreDePointUtilisateur > valeurJour){
-            gif.setFileName(downloadGif(gif.getUrlFichier()));
-            gif.getUtilisateur().setNombreDePoint(nombreDePointUtilisateur - valeurJour);
-            return gifRepository.save(gif);
+        if(gif.getJour() != null && gif.getJour().getGif() == null){
+            if(nombreDePointUtilisateur > valeurJour){
+                gif.setFileName(downloadGif(gif.getUrlFichier()));
+                gif.getUtilisateur().setNombreDePoint(nombreDePointUtilisateur - valeurJour);
+                return gifRepository.save(gif);
+            }else{
+                throw new RuntimeException("L'utilisateur n'a pas assez de points");
+            }
         }else{
-            throw new RuntimeException("L'utilisateur n'a pas assez de points");
+            throw new RuntimeException("Le jour choisi contient déjà un gif");
         }
     }
 

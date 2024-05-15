@@ -24,7 +24,8 @@
                    <img th:src="${'/gifs-files/' + jour.getGif().getFileName()}" class="image-gif">
                 </span>
                 <span th:unless="${jour.getGif() != null}">
-                    rohhhhh
+                    <p th:text="${jour.getValeur()} + ' points'"></p><br />
+                    <a th:href="${'/calendrier/' + jour.getId() + '/placer-gif'}">Placer un gif distant</a>
                 </span>
             </td>
             <td>
@@ -32,15 +33,18 @@
                     <p th:text="${jour.getGif().getUtilisateur().getPrenom()}"></p>
                 </span>
             </td>
+            <td>
+                <p>&#x1F937;</p>
+            </td>
         </tr>
     </table>
     <span th:if="${pageDeJours.getNumber() != 0}">
-        <a th:href="${utilisateurDTO.id + '?page=0'}">Première page</a>
-        <a th:href="@{${utilisateurDTO.id} + '?page=' + ${pageDeJours.getNumber() - 1}}">Page précédente</a>
+        <a href="?page=0">Première page</a>
+        <a th:href="@{'?page=' + ${pageDeJours.getNumber() - 1}}">Page précédente</a>
     </span>
     <span th:if="${pageDeJours.getNumber() != pageDeJours.getTotalPages() - 1}">
-        <a th:href="@{${utilisateurDTO.id} + '?page=' + ${pageDeJours.getNumber() + 1}}">Page suivante</a>
-        <a th:href="@{${utilisateurDTO.id} + '?page=' + ${pageDeJours.getTotalPages() - 1}}">Dernière page</a>
+        <a th:href="@{'?page=' + ${pageDeJours.getNumber() + 1}}">Page suivante</a>
+        <a th:href="@{'?page=' + ${pageDeJours.getTotalPages() - 1}}">Dernière page</a>
     </span>
     <br>
     <span th:text="@{'Page ' + ${pageDeJours.getNumber() + 1} + ' sur ' + ${pageDeJours.getTotalPages()} + ' : ' + ${joursEnCours}}"></span>

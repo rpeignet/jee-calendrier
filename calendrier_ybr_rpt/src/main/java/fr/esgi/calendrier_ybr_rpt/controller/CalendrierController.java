@@ -6,6 +6,7 @@ import fr.esgi.calendrier_ybr_rpt.dto.out.GifPlacementDTO;
 import fr.esgi.calendrier_ybr_rpt.mapper.UtilisateurMapper;
 import fr.esgi.calendrier_ybr_rpt.service.JourService;
 import fr.esgi.calendrier_ybr_rpt.service.UtilisateurService;
+import fr.esgi.calendrier_ybr_rpt.service.impl.UserConnectedService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,12 +25,14 @@ public class CalendrierController {
     private UtilisateurMapper utilisateurMapper;
     private JourService jourService;
 
-    // TODO : voir si on continue de passer l'id utilisateur en param, après avoir correctement gérer le connexion/deconnexion avec spring security
-    @GetMapping("/{idUtilisateur}")
-    public ModelAndView findAll(@PathVariable Long idUtilisateur, @PageableDefault(size = 7) Pageable pageable){
+    // TODO : correctement gérer le connexion/deconnexion avec spring security
+    private UserConnectedService userConnectedService;
+
+    @GetMapping("")
+    public ModelAndView findAll(@PageableDefault(size = 7) Pageable pageable){
         ModelAndView mav = new ModelAndView("calendrier/template");
 
-        Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+        Utilisateur utilisateur = utilisateurService.findById(userConnectedService.getIdUtilisateurConnecte());
         mav.addObject("theme", "/main-" + utilisateur.getTheme().getLibelle() + ".css");
         mav.addObject("utilisateurDTO", utilisateurMapper.toDTO(utilisateur));
 
@@ -42,10 +45,10 @@ public class CalendrierController {
         return mav;
     }
 
-    @GetMapping("/{idUtilisateur}/{id}/placer")
-    public ModelAndView create(@PathVariable Long idUtilisateur, @PathVariable Long id){
+    @GetMapping("/{id}/placer-gif")
+    public ModelAndView create(@PathVariable Long id){
         ModelAndView mav = new ModelAndView("calendrier/template-placement");
-        Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+        Utilisateur utilisateur = utilisateurService.findById(userConnectedService.getIdUtilisateurConnecte());
         Jour jour = jourService.findById(id);
         GifPlacementDTO gifPlacementDTO = new GifPlacementDTO(utilisateur.getId(), jour.getId(), jour.getDate(), jour.getValeur());
         mav.addObject("gifPlacementDTO", gifPlacementDTO);
