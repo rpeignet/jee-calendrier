@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Gif {
@@ -27,6 +29,9 @@ public class Gif {
     @JoinColumn(name = "utilisateur_id")
     @JsonManagedReference
     private Utilisateur utilisateur;
+
+    @OneToMany(mappedBy = "gif", cascade = CascadeType.ALL)
+    private List<Reaction> reactions;
 
     public Utilisateur getUtilisateur() {
         return utilisateur;

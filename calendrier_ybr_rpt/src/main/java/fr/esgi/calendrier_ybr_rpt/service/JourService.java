@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface JourService {
     public Page<Jour> findAll(Pageable pageable);
-
     public Jour findById(Long id);
 }

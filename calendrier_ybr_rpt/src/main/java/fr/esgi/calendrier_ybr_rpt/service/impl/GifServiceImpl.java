@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -32,6 +33,20 @@ public class GifServiceImpl implements GifService {
             }
         }else{
             throw new RuntimeException("Le jour choisi contient déjà un gif");
+        }
+    }
+
+    @Override
+    public Gif findById(Long id) {
+        if(id != null){
+            Optional<Gif> gif = gifRepository.findById(id);
+            if(gif.isPresent()){
+                return gif.get();
+            }else{
+                throw new RuntimeException("Le gif demandé n'existe pas");
+            }
+        }else {
+            throw new RuntimeException("Un id doit être renseigné");
         }
     }
 

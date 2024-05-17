@@ -39,6 +39,9 @@ public class Utilisateur {
     @JsonBackReference
     private List<Gif> gifs;
 
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    private List<Reaction> reactions;
+
     public Long getId() {
         return id;
     }
