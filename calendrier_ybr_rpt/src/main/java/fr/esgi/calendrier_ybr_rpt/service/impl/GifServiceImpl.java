@@ -1,6 +1,11 @@
 package fr.esgi.calendrier_ybr_rpt.service.impl;
 
 import fr.esgi.calendrier_ybr_rpt.business.Gif;
+import fr.esgi.calendrier_ybr_rpt.exception.MissingParamException;
+import fr.esgi.calendrier_ybr_rpt.exception.gif.GifAllreadyExistException;
+import fr.esgi.calendrier_ybr_rpt.exception.gif.GifDownloadException;
+import fr.esgi.calendrier_ybr_rpt.exception.gif.GifNotFoundException;
+import fr.esgi.calendrier_ybr_rpt.exception.gif.UtilisateurCreditException;
 import fr.esgi.calendrier_ybr_rpt.repository.GifRepository;
 import fr.esgi.calendrier_ybr_rpt.service.GifService;
 import lombok.AllArgsConstructor;
@@ -29,10 +34,10 @@ public class GifServiceImpl implements GifService {
                 gif.getUtilisateur().setNombreDePoint(nombreDePointUtilisateur - valeurJour);
                 return gifRepository.save(gif);
             }else{
-                throw new RuntimeException("L'utilisateur n'a pas assez de points");
+                throw new UtilisateurCreditException();
             }
         }else{
-            throw new RuntimeException("Le jour choisi contient déjà un gif");
+            throw new GifAllreadyExistException();
         }
     }
 
@@ -43,10 +48,10 @@ public class GifServiceImpl implements GifService {
             if(gif.isPresent()){
                 return gif.get();
             }else{
-                throw new RuntimeException("Le gif demandé n'existe pas");
+                throw new GifNotFoundException();
             }
         }else {
-            throw new RuntimeException("Un id doit être renseigné");
+            throw new MissingParamException();
         }
     }
 
@@ -57,7 +62,7 @@ public class GifServiceImpl implements GifService {
             FileUtils.copyURLToFile(new URL(url), fichierGif);
             return fichierGif.getName();
         }catch (Exception e){
-            throw new RuntimeException("Erreur lors du téléchargement du fichier GIF");
+            throw new GifDownloadException();
         }
     }
 }

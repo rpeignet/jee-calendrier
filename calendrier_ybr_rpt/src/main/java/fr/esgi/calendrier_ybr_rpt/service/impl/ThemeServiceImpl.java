@@ -1,7 +1,8 @@
 package fr.esgi.calendrier_ybr_rpt.service.impl;
 
 import fr.esgi.calendrier_ybr_rpt.business.Theme;
-import fr.esgi.calendrier_ybr_rpt.exception.ThemeNotFoundException;
+import fr.esgi.calendrier_ybr_rpt.exception.MissingParamException;
+import fr.esgi.calendrier_ybr_rpt.exception.utilisateur.ThemeNotFoundException;
 import fr.esgi.calendrier_ybr_rpt.repository.ThemeRepository;
 import fr.esgi.calendrier_ybr_rpt.service.ThemeService;
 import lombok.AllArgsConstructor;
@@ -22,10 +23,10 @@ public class ThemeServiceImpl implements ThemeService {
             if(theme.isPresent()){
                 return theme.get();
             }else{
-                throw new ThemeNotFoundException("Theme non trouvé !");
+                throw new ThemeNotFoundException();
             }
         }else{
-            throw new ThemeNotFoundException("Theme non trouvé !");
+            throw new MissingParamException();
         }
     }
 

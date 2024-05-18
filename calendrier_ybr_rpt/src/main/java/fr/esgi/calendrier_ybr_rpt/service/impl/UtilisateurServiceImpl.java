@@ -1,6 +1,8 @@
 package fr.esgi.calendrier_ybr_rpt.service.impl;
 
 import fr.esgi.calendrier_ybr_rpt.business.Utilisateur;
+import fr.esgi.calendrier_ybr_rpt.exception.MissingParamException;
+import fr.esgi.calendrier_ybr_rpt.exception.utilisateur.UtilisateurNotFoundException;
 import fr.esgi.calendrier_ybr_rpt.repository.UtilisateurRepository;
 import fr.esgi.calendrier_ybr_rpt.service.UtilisateurService;
 import lombok.AllArgsConstructor;
@@ -26,10 +28,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
             if(utilisateur.isPresent()){
                 return utilisateur.get();
             }else{
-                throw new RuntimeException("404 : utilisateur non trouvé");
+                throw new UtilisateurNotFoundException();
             }
         }else{
-            throw new RuntimeException("Vous devez renseigner un identitifiant utilisateur");
+            throw new MissingParamException();
         }
     }
 }

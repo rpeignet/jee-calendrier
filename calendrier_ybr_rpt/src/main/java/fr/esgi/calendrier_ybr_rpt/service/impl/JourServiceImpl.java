@@ -1,6 +1,8 @@
 package fr.esgi.calendrier_ybr_rpt.service.impl;
 
 import fr.esgi.calendrier_ybr_rpt.business.Jour;
+import fr.esgi.calendrier_ybr_rpt.exception.MissingParamException;
+import fr.esgi.calendrier_ybr_rpt.exception.jour.JourNotFoundException;
 import fr.esgi.calendrier_ybr_rpt.repository.JourRepository;
 import fr.esgi.calendrier_ybr_rpt.service.JourService;
 import lombok.AllArgsConstructor;
@@ -29,10 +31,10 @@ public class JourServiceImpl implements JourService {
             if(jour.isPresent()){
                 return jour.get();
             }else{
-                throw new RuntimeException("L'id jour n'existe pas");
+                throw new JourNotFoundException();
             }
         }else{
-            throw new RuntimeException("L'id jour est null");
+            throw new MissingParamException();
         }
     }
 }

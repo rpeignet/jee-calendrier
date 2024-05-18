@@ -1,6 +1,8 @@
 package fr.esgi.calendrier_ybr_rpt.service.impl;
 
 import fr.esgi.calendrier_ybr_rpt.business.TypeReaction;
+import fr.esgi.calendrier_ybr_rpt.exception.MissingParamException;
+import fr.esgi.calendrier_ybr_rpt.exception.typeReaction.TypeReactionNotFoundException;
 import fr.esgi.calendrier_ybr_rpt.repository.TypeReactionRepository;
 import fr.esgi.calendrier_ybr_rpt.service.TypeReactionService;
 import lombok.AllArgsConstructor;
@@ -27,10 +29,10 @@ public class TypeReactionServiceImpl implements TypeReactionService {
             if(typeReaction.isPresent()){
                 return typeReaction.get();
             }else{
-                throw new RuntimeException("Le type de réaction n'existe pas.");
+                throw new TypeReactionNotFoundException();
             }
         }else{
-            throw new RuntimeException("Missing param exception");
+            throw new MissingParamException();
         }
     }
 }
