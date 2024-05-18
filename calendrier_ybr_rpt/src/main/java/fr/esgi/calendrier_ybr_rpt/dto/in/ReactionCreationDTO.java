@@ -6,4 +6,5 @@ import lombok.Data;
 public class ReactionCreationDTO {
     public Long idGif;
     public Long idTypeReaction;
+    public Long idUtilisateur;
 }

@@ -68,13 +68,13 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 
     private void ajoutTypesReaction(){
         List<TypeReaction> typesReaction = new ArrayList<>();
-        typesReaction.add(new TypeReaction("1F600", "Visage souriant"));
-        typesReaction.add(new TypeReaction("1F604", "Visage souriant avec des yeux souriants"));
-        typesReaction.add(new TypeReaction("1F923", "Se rouler par terre en riant"));
-        typesReaction.add(new TypeReaction("1F643", "Upside-down"));
-        typesReaction.add(new TypeReaction("1F92A", "Visage loufoque"));
-        typesReaction.add(new TypeReaction("1F4AF", "100 points"));
-        typesReaction.add(new TypeReaction("1F937", "Homme qui hausse les épaules"));
+        typesReaction.add(new TypeReaction("&#x1F600;", "Visage souriant"));
+        typesReaction.add(new TypeReaction("&#x1F604;", "Visage souriant avec des yeux souriants"));
+        typesReaction.add(new TypeReaction("&#x1F923;", "Se rouler par terre en riant"));
+        typesReaction.add(new TypeReaction("&#x1F643;", "Upside-down"));
+        typesReaction.add(new TypeReaction("&#x1F92A;", "Visage loufoque"));
+        typesReaction.add(new TypeReaction("&#x1F4AF;", "100 points"));
+        typesReaction.add(new TypeReaction("&#x1F937;", "Homme qui hausse les épaules"));
         typeReactionRepository.saveAll(typesReaction);
     }
 }

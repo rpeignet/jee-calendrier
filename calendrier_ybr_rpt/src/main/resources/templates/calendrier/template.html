@@ -15,7 +15,7 @@
             <th>Jour</th>
             <th>Gif</th>
             <th>Utilisateur</th>
-            <th>Reaction</th>
+            <th>Reaction(s)</th>
         </tr>
         <tr th:each="jour:${pageDeJours.getContent()}">
             <td><span th:text="${jour.getDate()}"></span></td>
@@ -34,8 +34,11 @@
                 </span>
             </td>
             <td>
-                <!--<p>&#x1F937;</p>-->
+                <!--<p>&#x1F937;</p>
+                <p>&#x1F604;</p>-->
                 <span th:if="${jour.getGif() != null}">
+                    <!--<p th:each="reaction : ${jour.getGif().getReactions()}" th:utext="${reaction.getTypeReaction().getCode()}"></p>-->
+                    <p th:each="reaction : ${jour.getGif().getReactions()}" th:utext="${reaction.getTypeReaction().getCode()} + ' ' + ${reaction.getUtilisateur().getPrenom()}"></p>
                     <a th:href="${'/gifs/' + jour.getGif().getId() + '/reagir'}">Réagir</a>
                  </span>
             </td>

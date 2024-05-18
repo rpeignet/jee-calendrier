@@ -31,6 +31,7 @@ public class Gif {
     private Utilisateur utilisateur;
 
     @OneToMany(mappedBy = "gif", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Reaction> reactions;
 
     public Utilisateur getUtilisateur() {

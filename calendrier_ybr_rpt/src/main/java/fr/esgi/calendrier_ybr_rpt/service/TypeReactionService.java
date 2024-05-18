@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TypeReactionService {
     public List<TypeReaction> findAll();
+
+    public TypeReaction findById(Long id);
 }

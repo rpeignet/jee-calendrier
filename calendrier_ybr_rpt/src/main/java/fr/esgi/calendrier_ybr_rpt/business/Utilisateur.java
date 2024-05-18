@@ -40,6 +40,7 @@ public class Utilisateur {
     private List<Gif> gifs;
 
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Reaction> reactions;
 
     public Long getId() {
