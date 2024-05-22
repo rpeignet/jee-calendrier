@@ -13,7 +13,7 @@
     <table>
         <tr>
             <th>Jour</th>
-            <th>Gif</th>
+            <th>Gif <a href="?sort=gif">Trier</a></th>
             <th>Utilisateur</th>
             <th>Reaction(s)</th>
         </tr>
@@ -22,6 +22,7 @@
             <td>
                 <span th:if="${jour.getGif() != null}">
                    <img th:src="${'/gifs-files/' + jour.getGif().getFileName()}" class="image-gif">
+                    <p th:text="${jour.getGif().getLegende()}"></p>
                 </span>
                 <span th:unless="${jour.getGif() != null}">
                     <p th:text="${jour.getValeur()} + ' points'"></p><br />

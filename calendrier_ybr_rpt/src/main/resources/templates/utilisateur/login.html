@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
+    <link th:href="@{/utilisateur/style-login.css}" rel="stylesheet" />
 </head>
 <body>
     <h1>Calendrier</h1>
-    <form>
+    <div class="form">
+        <label>Email</label>
         <input type="text" name="email">
+        <label>Mot de passe</label>
         <input type="password" name="motDePasse">
-        <button type="submit" value="Connexion"></button>
-    </form>
-    <a href="/signin">S'inscrire</a>
+        <button>Connexion</button>
+        <a href="/signin">
+            <button>S'inscrire</button>
+        </a>
+    </div>
 </body>
 </html>

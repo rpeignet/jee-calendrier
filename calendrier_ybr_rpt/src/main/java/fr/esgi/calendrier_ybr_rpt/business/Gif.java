@@ -65,4 +65,12 @@ public class Gif {
     public void setUrlFichier(String urlFichier) {
         this.urlFichier = urlFichier;
     }
+
+    public String getLegende() {
+        return Legende;
+    }
+
+    public void setLegende(String legende) {
+        Legende = legende;
+    }
 }

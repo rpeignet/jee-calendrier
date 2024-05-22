@@ -10,6 +10,7 @@ import fr.esgi.calendrier_ybr_rpt.service.impl.UserConnectedService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class CalendrierController {
     private UserConnectedService userConnectedService;
 
     @GetMapping("")
-    public ModelAndView findAll(@PageableDefault(size = 7) Pageable pageable){
+    public ModelAndView findAll(@PageableDefault(size = 7, direction = Sort.Direction.ASC) Pageable pageable){
         ModelAndView mav = new ModelAndView("calendrier/template");
 
         Utilisateur utilisateur = utilisateurService.findById(userConnectedService.getIdUtilisateurConnecte());
@@ -52,6 +53,7 @@ public class CalendrierController {
         Jour jour = jourService.findById(id);
         GifPlacementDTO gifPlacementDTO = new GifPlacementDTO(utilisateur.getId(), jour.getId(), jour.getDate(), jour.getValeur());
         mav.addObject("gifPlacementDTO", gifPlacementDTO);
+        mav.addObject("theme", "/main-" + utilisateur.getTheme().getLibelle() + ".css");
         return mav;
     }
 }

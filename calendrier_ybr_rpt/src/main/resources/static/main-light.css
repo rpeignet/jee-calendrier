@@ -1,5 +1,28 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    padding: 20px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+th, td{
+    border-bottom: 1px solid #ddd;
+}
+
+input[type="text"], select{
+    border: 1px solid #ccc;
+}
+
+button{
+    color: #fff;
+}
+
+h3{
+    color: #333;
+}
+
+.container{
+    background-color: #fff;
 }

@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter une réaction</title>
+    <link th:href="@{/style-calendrier/style-reaction.css}" rel="stylesheet" />
+    <link th:href="${theme}" rel="stylesheet" />
 </head>
 <body>
     <h3 th:text="${'Réagir au gif de ' + prenomUtilisateur}"></h3>
-    <img th:src="${'/gifs-files/' + gifFileName}" class="image-gif">
-    <select id="typeReaction" name="typeReaction">
-        <option th:each="typeReaction : ${typeReactions}" th:value="${typeReaction.id}" th:text="${typeReaction.libelle}"></option>
-    </select>
-    <button>Réagir</button>
+    <div class="container">
+        <img th:src="${'/gifs-files/' + gifFileName}" class="image-gif">
+        <select id="typeReaction" name="typeReaction">
+            <option th:each="typeReaction : ${typeReactions}" th:value="${typeReaction.id}" th:text="${typeReaction.libelle}"></option>
+        </select>
+        <button>Réagir</button>
+    </div>
 </body>
 </html>

@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Placement d'un gif</title>
+    <link th:href="@{/style-calendrier/style-placement.css}" rel="stylesheet" />
+    <link th:href="${theme}" rel="stylesheet" />
 </head>
 <body>
     <h3 th:text="@{'Placer un gif distant sur le ' + ${gifPlacementDTO.date}} + ' (nombre de points : ' + ${gifPlacementDTO.valeur} + ')'"></h3>
-    <input type="text" name="url" id="url" placeholder="url">
+    <input type="text" name="url" id="url" placeholder="Url">
     <input type="text" name="legend" id="legend" placeholder="Légende">
     <button type="submit">Placer</button>
 </body>

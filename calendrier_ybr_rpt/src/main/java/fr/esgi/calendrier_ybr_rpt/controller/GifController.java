@@ -2,10 +2,13 @@ package fr.esgi.calendrier_ybr_rpt.controller;
 
 import fr.esgi.calendrier_ybr_rpt.business.Gif;
 import fr.esgi.calendrier_ybr_rpt.business.TypeReaction;
+import fr.esgi.calendrier_ybr_rpt.business.Utilisateur;
 import fr.esgi.calendrier_ybr_rpt.dto.out.TypeReactionDTO;
 import fr.esgi.calendrier_ybr_rpt.mapper.TypeReactionMapper;
 import fr.esgi.calendrier_ybr_rpt.service.GifService;
 import fr.esgi.calendrier_ybr_rpt.service.TypeReactionService;
+import fr.esgi.calendrier_ybr_rpt.service.UtilisateurService;
+import fr.esgi.calendrier_ybr_rpt.service.impl.UserConnectedService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +25,17 @@ import java.util.stream.Collectors;
 public class GifController {
     private TypeReactionService typeReactionService;
     private TypeReactionMapper typeReactionMapper;
-
     private GifService gifService;
+
+    private UserConnectedService userConnectedService;
+    private UtilisateurService utilisateurService;
 
     @GetMapping("/{id}/reagir")
     public ModelAndView reagir(@PathVariable Long id){
         ModelAndView mav = new ModelAndView("calendrier/template-reaction");
+
+        Utilisateur utilisateurConnecte = utilisateurService.findById(userConnectedService.getIdUtilisateurConnecte());
+        mav.addObject("theme", "/main-" + utilisateurConnecte.getTheme().getLibelle() + ".css");
 
         Gif gif = gifService.findById(id);
         mav.addObject("prenomUtilisateur", gif.getUtilisateur().getPrenom());

@@ -62,7 +62,7 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
         utilisateurCreationDTO.prenom = "Robin";
         utilisateurCreationDTO.email = "robin@esgi.fr";
         utilisateurCreationDTO.motDePasse = "test";
-        utilisateurCreationDTO.idTheme = 1L;
+        utilisateurCreationDTO.idTheme = 2L;
         utilisateurService.save(utilisateurMapper.toEntity(utilisateurCreationDTO));
     }
 
