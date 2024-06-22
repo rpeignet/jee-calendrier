@@ -26,3 +26,12 @@ h3{
 .container{
     background-color: #fff;
 }
+
+.file-label{
+    background-color: #e0e0e0;
+        color: #000;
+}
+
+.file-label:hover {
+    background-color: #d0d0d0;
+}

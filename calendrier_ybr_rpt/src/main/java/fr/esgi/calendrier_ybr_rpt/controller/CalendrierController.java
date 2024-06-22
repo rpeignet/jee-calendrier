@@ -26,10 +26,7 @@ public class CalendrierController {
     private UtilisateurService utilisateurService;
     private UtilisateurMapper utilisateurMapper;
     private JourService jourService;
-
     private GifRestController gifRestController;
-
-    // TODO : correctement gérer le connexion/deconnexion avec spring security
     private UserConnectedService userConnectedService;
 
     @GetMapping("")

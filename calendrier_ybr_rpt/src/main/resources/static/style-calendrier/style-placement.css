@@ -49,8 +49,6 @@ input[type="file"] {
 .file-label {
     width: 50%;
     padding: 10px;
-    background-color: #6200ea;
-    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -58,8 +56,4 @@ input[type="file"] {
     text-align: center;
     margin-bottom: 2vh;
     transition: background-color 0.3s;
-}
-
-.file-label:hover {
-    background-color: #3700b3;
 }

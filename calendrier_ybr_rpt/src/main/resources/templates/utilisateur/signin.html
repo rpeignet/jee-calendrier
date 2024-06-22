@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Inscription</h1>
-    <div class="form">
+    <form class="form"  th:action="@{/form-signin}" method="post">
         <label>Nom</label>
         <input type="text" name="nom" id="nom">
         <label>Prenom</label>
@@ -17,11 +17,11 @@
         <label>Mot de passe</label>
         <input type="password" name="motDePasse" id="motDePasse">
         <label>Theme</label>
-        <select id="theme" name="theme">
+        <select name="idTheme">
             <option th:each="theme : ${themes}" th:value="${theme.id}" th:text="${theme.libelle}"></option>
         </select>
         <button type="submit" onclick="ajouterUtilisateur()">Inscription</button>
-    </div> 
+    </form>
     <script th:src="@{/utilisateur/script.js}"></script>
 </body>
 </html>

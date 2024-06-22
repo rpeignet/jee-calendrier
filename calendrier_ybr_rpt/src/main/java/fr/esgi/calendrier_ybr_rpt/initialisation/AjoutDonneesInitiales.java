@@ -3,16 +3,15 @@ package fr.esgi.calendrier_ybr_rpt.initialisation;
 import fr.esgi.calendrier_ybr_rpt.business.Jour;
 import fr.esgi.calendrier_ybr_rpt.business.Theme;
 import fr.esgi.calendrier_ybr_rpt.business.TypeReaction;
-import fr.esgi.calendrier_ybr_rpt.business.Utilisateur;
 import fr.esgi.calendrier_ybr_rpt.dto.in.UtilisateurCreationDTO;
 import fr.esgi.calendrier_ybr_rpt.mapper.UtilisateurMapper;
 import fr.esgi.calendrier_ybr_rpt.repository.JourRepository;
 import fr.esgi.calendrier_ybr_rpt.repository.ThemeRepository;
 import fr.esgi.calendrier_ybr_rpt.repository.TypeReactionRepository;
-import fr.esgi.calendrier_ybr_rpt.repository.UtilisateurRepository;
 import fr.esgi.calendrier_ybr_rpt.service.UtilisateurService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -28,8 +27,8 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
     private JourRepository jourRepository;
     private UtilisateurService utilisateurService;
     private UtilisateurMapper utilisateurMapper;
-
     private TypeReactionRepository typeReactionRepository;
+    private InMemoryUserDetailsManager inMemoryUserDetailsManager;
 
     @Override
     public void run(String... args) throws Exception {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
@@ -7,15 +7,30 @@
 </head>
 <body>
     <h1>Calendrier</h1>
-    <div class="form">
+    <!--<form class="form" th:action="@{/login}" method="post">
         <label>Email</label>
-        <input type="text" name="email">
+        <input type="text" name="username">
         <label>Mot de passe</label>
         <input type="password" name="motDePasse">
-        <button>Connexion</button>
+        <button type="submit">Connexion</button>
+    </form>-->
+    <div class="form" >
+        <form th:action="@{/login}" method="post">
+            <label for="username">Email</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password">
+            <button type="submit">Connexion</button>
+        </form>
         <a href="/signin">
             <button>S'inscrire</button>
         </a>
+        <div th:if="${param.error}">
+            <p class="error">Invalid username or password</p>
+        </div>
+        <div th:if="${param.logout}">
+            <p class="message">You have been logged out</p>
+        </div>
     </div>
 </body>
 </html>
