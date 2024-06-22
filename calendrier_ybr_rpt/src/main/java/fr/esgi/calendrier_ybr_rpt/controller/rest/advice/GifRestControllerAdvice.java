@@ -1,10 +1,7 @@
 package fr.esgi.calendrier_ybr_rpt.controller.rest.advice;
 
 import fr.esgi.calendrier_ybr_rpt.exception.MissingParamException;
-import fr.esgi.calendrier_ybr_rpt.exception.gif.GifAllreadyExistException;
-import fr.esgi.calendrier_ybr_rpt.exception.gif.GifDownloadException;
-import fr.esgi.calendrier_ybr_rpt.exception.gif.GifNotFoundException;
-import fr.esgi.calendrier_ybr_rpt.exception.gif.UtilisateurCreditException;
+import fr.esgi.calendrier_ybr_rpt.exception.gif.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -33,6 +30,12 @@ public class GifRestControllerAdvice {
     @ExceptionHandler(GifDownloadException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleGifDownloadException(GifDownloadException e){
+        return e.getMessage();
+    }
+
+    @ExceptionHandler(GifFileFormatException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleGifFileFormatException(GifFileFormatException e){
         return e.getMessage();
     }
 }

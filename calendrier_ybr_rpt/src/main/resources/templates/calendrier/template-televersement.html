@@ -8,8 +8,9 @@
 </head>
 <body>
     <h3 th:text="@{'Placer un gif distant sur le ' + ${gifPlacementDTO.date}} + ' (nombre de points : ' + ${gifPlacementDTO.valeur} + ')'"></h3>
-    <form action="/calendrier/form-placement-gif" method="post">
-        <input type="text" name="urlFichier" placeholder="Url">
+    <form action="/calendrier/form-televersement-gif" method="post" enctype="multipart/form-data">
+        <input type="file" id="file" name="file">
+        <label for="file" class="file-label">Fichier gif</label>
         <input type="text" name="legende" placeholder="Légende">
         <input type="text" name="idJour" th:value="${gifPlacementDTO.idJour}" style="display:none">
         <input type="text" name="idUtilisateur" th:value="${gifPlacementDTO.idUtilisateur}" style="display:none">

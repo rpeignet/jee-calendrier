@@ -10,10 +10,13 @@
     <h3 th:text="${'Réagir au gif de ' + prenomUtilisateur}"></h3>
     <div class="container">
         <img th:src="${'/gifs-files/' + gifFileName}" class="image-gif">
-        <select id="typeReaction" name="typeReaction">
-            <option th:each="typeReaction : ${typeReactions}" th:value="${typeReaction.id}" th:text="${typeReaction.libelle}"></option>
-        </select>
-        <button>Réagir</button>
+        <form action="/gifs/form-react-gif" method="post">
+            <input name="idGif" th:value="${idGif}" style="display:none">
+            <select name="idTypeReaction">
+                <option th:each="typeReaction : ${typeReactions}" th:value="${typeReaction.id}" th:text="${typeReaction.libelle}"></option>
+            </select>
+            <button>Réagir</button>
+        </form>
     </div>
 </body>
 </html>

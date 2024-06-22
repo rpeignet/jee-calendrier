@@ -1,6 +1,7 @@
 package fr.esgi.calendrier_ybr_rpt.business;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class Gif {
     private Long id;
 
     @Pattern(regexp = ".*\\.(?i)(gif)$", message = "Le Gif distant doit pointer vers une URL au bon format qui se termine par .gif, .Gif ou .GIF")
+    @Nullable
     private String urlFichier;
 
     private String fileName;

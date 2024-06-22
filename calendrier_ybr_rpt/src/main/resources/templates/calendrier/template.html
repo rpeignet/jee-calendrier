@@ -27,6 +27,7 @@
                 <span th:unless="${jour.getGif() != null}">
                     <p th:text="${jour.getValeur()} + ' points'"></p><br />
                     <a th:href="${'/calendrier/' + jour.getId() + '/placer-gif'}">Placer un gif distant</a>
+                    <a th:href="${'/calendrier/' + jour.getId() + '/televerser-gif'}">Téléverser un gif distant</a>
                 </span>
             </td>
             <td>
