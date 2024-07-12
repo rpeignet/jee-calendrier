@@ -1,13 +1,8 @@
 package fr.esgi.calendrier_ybr_rpt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.esgi.calendrier_ybr_rpt.business.Utilisateur;
 import fr.esgi.calendrier_ybr_rpt.dto.in.GifCreationDTO;
-import fr.esgi.calendrier_ybr_rpt.dto.in.UtilisateurCreationDTO;
-import fr.esgi.calendrier_ybr_rpt.exception.gif.GifAllreadyExistException;
-import fr.esgi.calendrier_ybr_rpt.mapper.UtilisateurMapper;
-import fr.esgi.calendrier_ybr_rpt.repository.UtilisateurRepository;
-import fr.esgi.calendrier_ybr_rpt.service.UtilisateurService;
+import fr.esgi.calendrier_ybr_rpt.exception.gif.GifAlreadyExistException;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -53,7 +48,7 @@ class GifRestControllerIT {
 
     @Test
     @Order(2)
-    void shouldReturnGifAllreadyExistException() throws Exception {
+    void shouldReturnGifAlreadyExistException() throws Exception {
         GifCreationDTO gif = new GifCreationDTO();
         gif.idUtilisateur = 1L;
         gif.urlFichier = "https://c.tenor.com/uxRYtAqtMfgAAAAC/tenor.gif";
@@ -71,7 +66,7 @@ class GifRestControllerIT {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isBadRequest())
                 .andExpect(result -> {
-                    assertThat(result.getResolvedException()).isInstanceOf(GifAllreadyExistException.class);
+                    assertThat(result.getResolvedException()).isInstanceOf(GifAlreadyExistException.class);
                 });
     }
 }

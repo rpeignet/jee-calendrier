@@ -38,7 +38,7 @@ public class GifServiceImpl implements GifService {
             }
             return gifRepository.save(gif);
         }else{
-            throw new GifAllreadyExistException();
+            throw new GifAlreadyExistException();
         }
     }
 
