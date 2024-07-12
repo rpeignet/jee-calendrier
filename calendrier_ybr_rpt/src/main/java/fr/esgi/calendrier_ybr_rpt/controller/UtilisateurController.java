@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class UtilisateurController {
     private ThemeService themeService;
     private ThemeMapper themeMapper;
-
     private UtilisateurRestController utilisateurRestController;
 
     @GetMapping({"login", "/"})
