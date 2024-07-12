@@ -53,7 +53,7 @@ class GifRestControllerIT {
 
     @Test
     @Order(2)
-    void shouldReturnGifAllreadyExistException() throws Exception {
+    void shouldReturnGifAlreadyExistException() throws Exception {
         GifCreationDTO gif = new GifCreationDTO();
         gif.idUtilisateur = 1L;
         gif.urlFichier = "https://c.tenor.com/uxRYtAqtMfgAAAAC/tenor.gif";

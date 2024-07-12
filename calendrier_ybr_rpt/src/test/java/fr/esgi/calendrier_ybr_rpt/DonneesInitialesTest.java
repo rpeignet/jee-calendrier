@@ -18,7 +18,7 @@ class DonneesInitialesTest {
 
     @Test
     @Order(1)
-    void shouldImportDayOfMounth(){
+    void shouldImportDayOfMonth(){
         // L'application intialise les jours du mois en cours en base de donnée H2
         int jourMoisEnCours = YearMonth.now().lengthOfMonth();
         assert jourRepository.count() == jourMoisEnCours;
