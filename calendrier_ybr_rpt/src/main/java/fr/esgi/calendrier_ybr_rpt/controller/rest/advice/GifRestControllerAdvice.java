@@ -1,6 +1,5 @@
 package fr.esgi.calendrier_ybr_rpt.controller.rest.advice;
 
-import fr.esgi.calendrier_ybr_rpt.exception.MissingParamException;
 import fr.esgi.calendrier_ybr_rpt.exception.gif.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,9 +14,9 @@ public class GifRestControllerAdvice {
         return e.getMessage();
     }
 
-    @ExceptionHandler(GifAllreadyExistException.class)
+    @ExceptionHandler(GifAlreadyExistException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleGifAllreadyExistException(GifAllreadyExistException e){
+    public String handleGifAllreadyExistException(GifAlreadyExistException e){
         return e.getMessage();
     }
 
