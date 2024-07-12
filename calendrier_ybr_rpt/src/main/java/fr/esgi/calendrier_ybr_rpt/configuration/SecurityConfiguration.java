@@ -26,7 +26,7 @@ public class SecurityConfiguration {
                 .successHandler(new LoginSuccessHandler(userConnectedService, utilisateurService))
                 .failureHandler(new LoginFailureHandler())
         ).authorizeHttpRequests(requests ->
-                                requests.requestMatchers("/swagger-ui/**").permitAll()
+                                requests.requestMatchers("/swagger-ui/**", "/v2/api-docs/**", "/v3/api-docs/**", "/swagger-resources/**", "/swagger-ui.html").permitAll()
                                         .requestMatchers("/utilisateur/**").permitAll()
                                         .requestMatchers("/main-dark.css").permitAll()
                                         .requestMatchers("/main-light.css").permitAll()
